@@ -7,9 +7,11 @@ not implement an agent or execute the model's suggestions.
 
 ## Current status
 
-The local code and experiment templates are prepared. **Live Gemini runs,
-response assessments, the GitHub PR, and Slack sharing are pending.** Offline
-checks are not evidence of a successful Gemini request. Coding assistance was
+The private [GitHub repository](https://github.com/charlieijk/OpenAvenueSecurityAgent)
+and [draft PR #1](https://github.com/charlieijk/OpenAvenueSecurityAgent/pull/1) are
+created. **Live Gemini runs, response assessments, instructor invitation/review,
+and Slack sharing are pending.** Offline checks are not evidence of a successful
+Gemini request. Coding assistance was
 used to prepare this starter; I should understand the code, adapt the examples,
 and write my own expectations and reflection.
 
@@ -132,15 +134,20 @@ git add experiment.py cases.json verify_claim.py requirements.txt requirements-l
 git commit -m "Record three Gemini security experiments and reflections"
 ```
 
-Create a private repository named `OpenAvenueSecurityAgent`, push `main`, then
-push the assignment branch (run these only once):
+The repository and draft PR already exist. Push new experiment records to the
+assignment branch; do not create another repository or PR:
 
 ```sh
-gh repo create charlieijk/OpenAvenueSecurityAgent --private --source=. --remote=origin
-git push -u origin main
-git push -u origin assignment-1-gemini
+git push origin assignment-1-gemini
+```
+
+Update `PR_DESCRIPTION.md` with the actual completed results and use that text
+to update the existing PR. Invite the instructor and request review when ready:
+
+```sh
 gh api --method PUT repos/charlieijk/OpenAvenueSecurityAgent/collaborators/edsioufi -f permission=push
-gh pr create --base main --head assignment-1-gemini --title "Assignment 1: first Gemini security experiments" --body-file PR_DESCRIPTION.md
+gh pr edit 1 --body-file PR_DESCRIPTION.md
+gh pr ready 1
 ```
 
 The instructor may need to accept the collaborator invitation before a review
@@ -150,8 +157,7 @@ request is possible. Once accepted:
 gh pr edit --add-reviewer edsioufi
 ```
 
-Do not merge until the instructor reviews and approves the PR. If a repository
-already exists, use it rather than repeating `gh repo create`.
+Do not merge until the instructor reviews and approves the PR.
 
 ## Slack checklist
 
