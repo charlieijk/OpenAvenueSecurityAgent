@@ -5,9 +5,35 @@ with Python and `google-genai`, then compare responses to three defensive
 cybersecurity inputs. This assignment makes one request per execution and does
 not implement an agent or execute the model's suggestions.
 
+## Try the interactive coursework demo
+
+From this repository, run the offline demo with Python 3.10 or newer:
+
+```sh
+python3 demo.py
+```
+
+Open **http://127.0.0.1:8767/**. No API key or SDK installation is needed for
+this demo. Choose one of the three examples, inspect its input and exact prompt,
+write your expectation, and download an experiment plan. **Run local check**
+executes the real in-memory SQLite verification and displays its evidence.
+
+![Offline coursework demo showing the input, expectation and SQLite check](docs/demo/coursework.jpg)
+
+![Real local SQLite verification result](docs/demo/verification.jpg)
+
+The demo does not call Gemini. **Recorded response** starts empty; load a completed
+JSON record produced by `experiment.py` after a real run to inspect the response
+and your reflection. Files are read only in your browser and are not uploaded.
+Records must match the current example and prompt. A downloaded plan is a draft,
+not a completed experiment or model result.
+
+The local server binds only to loopback and serves only its demo assets and two
+fixed endpoints. Stop it with Ctrl+C. Use `python3 demo.py --port 8768` if needed.
+
 ## Current status
 
-The private [GitHub repository](https://github.com/charlieijk/OpenAvenueSecurityAgent)
+The [GitHub repository](https://github.com/charlieijk/OpenAvenueSecurityAgent)
 and [draft PR #1](https://github.com/charlieijk/OpenAvenueSecurityAgent/pull/1) are
 created. **Live Gemini runs, response assessments, instructor invitation/review,
 and Slack sharing are pending.** Offline checks are not evidence of a successful
@@ -172,6 +198,7 @@ Do not merge until the instructor reviews and approves the PR.
 ```sh
 python -m unittest discover -s tests -v
 python verify_claim.py
+node --check demo/demo.js
 ```
 
 The tests use mocked responses and never contact Gemini. `requirements.txt`
