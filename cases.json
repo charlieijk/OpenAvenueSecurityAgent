@@ -1,0 +1,14 @@
+{
+  "bound-query": {
+    "input": "Toy Python function using a supplied SQLite connection:\n\ndef find_user(connection, username):\n    return connection.execute(\n        'SELECT id, username FROM users WHERE username = ?',\n        (username,),\n    ).fetchone()\n\nAssume username is untrusted user input. Review only what this snippet establishes; the caller and database permissions are not shown.",
+    "prediction_questions": "Does parameter binding address SQL injection for this value? Can the snippet alone prove authentication or authorization?"
+  },
+  "web-config": {
+    "input": "Synthetic Flask-style web application configuration, intended for a public production site:\nDEBUG = True\nSESSION_COOKIE_SECURE = False\nSESSION_COOKIE_HTTPONLY = True\nSESSION_COOKIE_SAMESITE = 'Lax'\n\nNo routing, reverse proxy, HTTPS configuration, or deployment evidence is supplied.",
+    "prediction_questions": "Which settings deserve defensive changes? Which deployment facts cannot be inferred?"
+  },
+  "login-log": {
+    "input": "Invented authentication log using documentation-only IP addresses:\n2026-10-01T10:00:00Z user=demo outcome=failed ip=203.0.113.7\n2026-10-01T10:00:10Z user=demo outcome=failed ip=203.0.113.7\n2026-10-01T10:01:00Z user=demo outcome=success ip=198.51.100.23\n\nNo device history, MFA events, user confirmation, session activity, or IP reputation data is supplied.",
+    "prediction_questions": "Will the model distinguish a reason to investigate from proof of account compromise?"
+  }
+}
