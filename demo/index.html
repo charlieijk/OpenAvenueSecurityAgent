@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Security Agents · Experiment Lab</title>
+  <link rel="stylesheet" href="/demo.css">
+  <script src="/demo.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a href="/" class="brand">◈ AI Security Agents</a><span>OPEN AVENUES · ASSIGNMENT 01</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">A small experiment. A verifiable claim.</p><h1>Inspect the prompt.<br>Check the evidence.</h1><p>Three defensive examples for a first Gemini API call. Compare what the input establishes with what a model can reasonably conclude.</p><div class="boundary"><strong>Offline coursework demo</strong><span>This is the foundation for an agent. Live Gemini responses are pending. Browsing examples and running the SQLite check make no model requests.</span></div></section>
+    <section class="lab" aria-label="Security experiment lab">
+      <nav aria-label="Choose a security example" id="cases"><p>Loading examples…</p></nav>
+      <article class="experiment">
+        <header><span class="eyebrow" id="case-number">EXPERIMENT 01</span><h2 id="case-title">Loading experiment</h2></header>
+        <div class="tabs" role="tablist" aria-label="Experiment views"><button type="button" role="tab" aria-selected="true" aria-controls="input-panel" id="input-tab">Input & expectation</button><button type="button" role="tab" aria-selected="false" aria-controls="prompt-panel" id="prompt-tab">Exact prompt</button><button type="button" role="tab" aria-selected="false" aria-controls="response-panel" id="response-tab">Recorded response</button></div>
+        <section role="tabpanel" id="input-panel" aria-labelledby="input-tab"><pre id="case-input"></pre><div class="question"><h3>Before the API call</h3><p id="prediction-question"></p><label for="expectation">Your expectation</label><textarea id="expectation" rows="3" placeholder="Write what you expect Gemini to get right, miss, or leave uncertain."></textarea><button type="button" id="download-plan">Download experiment plan</button><p class="hint">Your text stays in this tab. A plan is not a completed model run.</p></div></section>
+        <section role="tabpanel" id="prompt-panel" aria-labelledby="prompt-tab" hidden><p class="hint">This is the prompt produced by the actual Python experiment script.</p><pre id="exact-prompt"></pre></section>
+        <section role="tabpanel" id="response-panel" aria-labelledby="response-tab" hidden><div id="recorded-response"><h3>No recorded response loaded</h3><p>Run experiment.py with your own expectation and a free-tier Gemini key, then load its JSON record here.</p></div><label class="file-label" for="record-file">Load an actual run record</label><input id="record-file" type="file" accept="application/json,.json"><p class="hint">Read locally in this tab. The file is not uploaded to the server.</p><p id="record-error" role="alert"></p></section>
+        <aside class="verification" id="verification"><div><span class="eyebrow">INDEPENDENT EVIDENCE</span><h3>Check SQLite parameter binding</h3><p>Run the real local check using a normal quoted name.</p></div><button type="button" id="verify">Run local check ↗</button><pre id="verification-result" aria-live="polite">Not run yet.</pre></aside>
+      </article>
+    </section>
+    <p id="status" role="status" aria-live="polite"></p>
+    <footer>Python + google-genai · Synthetic inputs · No tool execution by a model</footer>
+  </main>
+</body>
+</html>
